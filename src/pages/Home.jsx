@@ -31,7 +31,6 @@ const Home = ({
     setInputSearch(event.target.value);
   };
 
-  console.log(count);
   return (
     <>
       {openBasket ? (
@@ -39,7 +38,6 @@ const Home = ({
           setOpenBasket={setOpenBasket}
           isInBasket={isInBasket}
           deleteFromBasket={deleteFromBasket}
-          count={count}
           setCount={setCount}
         />
       ) : null}

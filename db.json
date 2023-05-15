@@ -1,39 +1,7 @@
 {
-  "basket": [
-    {
-      "id": 3,
-      "img": "images/img/image 3.jpg",
-      "model": "Мужские Кроссовки Nike Blazer Mid Suede",
-      "prise": 8499
-    },
-    {
-      "id": 2,
-      "img": "images/img/image 2.jpg",
-      "model": "Мужские Кроссовки Nike Air Max 270",
-      "prise": 12999
-    },
-    {
-      "id": "1",
-      "img": "images/img/image 1.jpg",
-      "model": "Мужские Кроссовки Nike Blazer Mid Suede",
-      "prise": "12999"
-    }
-  ],
+  "basket": [],
   "purchases": [],
-  "favorite": [
-    {
-      "id": 10,
-      "img": "images/img/image 10.jpg",
-      "model": "Мужские Кроссовки Nike Kyrie Flytrap IV",
-      "prise": 11299
-    },
-    {
-      "id": 9,
-      "img": "images/img/image 9.jpg",
-      "model": "Мужские Кроссовки Nike Lebron XVIII Low",
-      "prise": 13999
-    }
-  ],
+  "favorite": [],
   "products": [
     {
       "id": "1",

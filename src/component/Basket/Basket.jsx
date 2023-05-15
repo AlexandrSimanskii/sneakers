@@ -1,9 +1,6 @@
 import React from "react";
 
-const Basket = ({ setOpenBasket, isInBasket, deleteFromBasket,count,setCount }) => {
-
-
-
+const Basket = ({ setOpenBasket, isInBasket, deleteFromBasket }) => {
   return (
     <div className="shadow">
       <div className="overlay"></div>
@@ -30,7 +27,7 @@ const Basket = ({ setOpenBasket, isInBasket, deleteFromBasket,count,setCount }) 
                       <p>{item.model}</p>
                       <b>{item.prise}</b>
                     </div>
-             <p>{count}</p>
+
                     <img
                       onClick={() => {
                         deleteFromBasket(item.id);

@@ -36,16 +36,16 @@ const Card = ({
     }
   };
 
-  const deliteFromFavorite = (item) => {
-    setFavoritItem((prev) => prev.filter((item) => item.id !== favoritItem.id));
-
+  const deliteFromFavorite = () => {
+    console.log(item);
     try {
       axios.delete(`http://localhost:3004/favorite/${item.id}`);
     } catch (error) {
       console.log("err");
     }
+    setFavoritItem((prev) => prev.filter((item) => item.id !== favoritItem.id));
   };
-  console.log(favoritItem);
+
   return (
     <div>
       <div key={item.id} className="content__card">

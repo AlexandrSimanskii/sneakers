@@ -31,8 +31,6 @@ const App = () => {
   return (
     <div className="loyout">
       <div className="wrapper">
-       
-
         <Header setOpenBasket={setOpenBasket} />
         <Routes>
           <Route
