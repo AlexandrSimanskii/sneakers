@@ -1,0 +1,107 @@
+.content {
+  width: 100%;
+  padding: 39px 60px;
+  background-color: white;
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    row-gap: 70px;
+  }
+  &__card {
+    position: relative;
+    padding: 29px 20px 24px;
+    max-width: 210px;
+    // height: 2px;
+    border: 1px solid #f3f3f3;
+    border-radius: 40px;
+    transition: 0.5s;
+
+    &:hover {
+      box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+      transform: translateY(-10px);
+    }
+    &-heart {
+      cursor: pointer;
+    }
+    &-top {width: 100%;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &-title {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      margin: 14px 0;
+      color: #000000;
+    }
+    &-prise {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      font-size: 11px;
+      line-height: 13px;
+
+      color: #bdbdbd;
+    }
+    &-amount {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 17px;
+
+      color: #000000;
+    }
+    &-add {
+      cursor: pointer;
+      &:hover {
+        box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.06);
+      }
+    }
+  }
+  &__top {
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-search {
+      margin-left: 10px;
+      padding: 15px 18px;
+      border-radius: 10px;
+      border: 1px solid #eaeaea;
+      display: flex;
+      align-items: center;
+
+      &__clear {
+        box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.1);
+        padding: 5px;
+        background-color: transparent;
+        border-radius: 20px;
+        cursor: pointer;
+        border: 2px solid #e3e3e3;
+        color: rgb(163, 163, 163);
+        &:hover {
+          color: rgb(136, 134, 134);
+          border: 2px solid #b4aeae;
+          background-color: rgb(243, 243, 243);
+        }
+        &:active {
+          border: 2px solid rgb(139, 135, 135);
+        }
+      }
+    }
+    input {
+      padding-left: 14px;
+      border: 0;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17px;
+
+      outline: none;
+      color: #5c5c5c;
+    }
+  }
+}

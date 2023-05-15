@@ -1,0 +1,44 @@
+.favorite {
+  
+  background-color: white;
+  padding: 0 60px;
+  &__top {
+    margin: 42px 0 40px;
+    display: flex;
+    align-items: center;
+    column-gap: 21px;
+    &-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      border: 1px solid #f2f2f2;
+      border-radius: 8px;
+    }
+    &-title {
+      font-weight: 700;
+      font-size: 32px;
+    }
+  }
+  &__empty {
+    margin-top: 245px;
+    text-align: center;
+    max-width: 290px;
+    margin: 0 auto;
+    &-title {
+      font-weight: 600;
+      font-size: 24px;
+      margin: 24px 0 11px;
+    }
+    &-subtitle {
+      font-weight: 400;
+      font-size: 16px;
+
+      opacity: 0.4;
+    }
+    &-btn {
+      margin: 70px 22.5px ;
+    }
+  }
+}
