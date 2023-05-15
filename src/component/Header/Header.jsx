@@ -5,7 +5,9 @@ const Header = ({ setOpenBasket }) => {
   return (
     <header className="header">
       <div className="header__left">
-        <div></div>
+        <table>
+          <tr></tr>
+        </table>
         <img width={40} height={40} src="images/img/logo.png" alt="logo" />
         <div className="header__left-text">
           <h3 className="header__left-title">React sneakers</h3>
