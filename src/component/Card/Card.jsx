@@ -9,7 +9,7 @@ const Card = ({
   item,
   favoritItem,
   setFavoritItem,
-  added
+  added,
 }) => {
   const [productLiked, setProductLiked] = useState(false);
   const [isAdded, setIsAdded] = useState(added);
@@ -24,44 +24,40 @@ const Card = ({
     // setIsAdded((prev) => !prev);
 
     if (!isAdded && !isInBasket.some((d) => d.id === item.id)) {
-    setIsInBasket((prev) => [...prev, item]);
+      setIsInBasket((prev) => [...prev, item]);
 
-    axios.post("http://localhost:3004/basket", item);
+      axios.post("http://localhost:3004/basket", item);
     }
   };
 
-  const addInFavorite = (item) => {
-    // if (!favoritItem.some((obj) => obj.id === item.id)) {
+  const addDeleteFavorite = () => {
+    setProductLiked((prev) => !prev);
+
+    if (productLiked) {
+      if (favoritItem.some((obj) => obj.id === item.id)) {
+      }
+      try {
+        axios.delete(`http://localhost:3004/favorite/${item.id}`);
+      } catch (error) {
+        console.log("err");
+      }
+    } else {
       try {
         axios.post("http://localhost:3004/favorite", item);
       } catch (error) {
         console.log("error");
       }
-    // }
+    }
   };
 
-  const deliteFromFavorite = (item) => {
-    
-    if (favoritItem.some((obj) => obj.id === item.id)) {
-    }
-    try {
-      axios.delete(`http://localhost:3004/favorite/${item.id}`);
-      // setFavoritItem((prev) =>
-      //   prev.filter((item) => item.id !== favoritItem.id)
-      // );
-    } catch (error) {
-      console.log("err");
-    }
-  };
-  console.log(deleteFromBasket);
+  
   return (
     <div>
       <div key={item.id} className="content__card">
         <div className="content__card-top">
           <img
             onClick={() => {
-              !productLiked ? addInFavorite(item) : deliteFromFavorite(item);
-              setProductLiked((prev) => !prev);
+              addDeleteFavorite();
             }}
             className="content__card-heart"
             src={

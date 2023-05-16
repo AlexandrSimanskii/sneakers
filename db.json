@@ -26,20 +26,7 @@
     }
   ],
   "purchases": [],
-  "favorite": [
-    {
-      "id": 7,
-      "img": "images/img/image 7.jpg",
-      "model": "Мужские Кроссовки Jordan Air Jordan 11",
-      "prise": 10799
-    },
-    {
-      "id": 8,
-      "img": "images/img/image 8.jpg",
-      "model": "Мужские Кроссовки Nike LeBron XVIII",
-      "prise": 14899
-    }
-  ],
+  "favorite": [],
   "products": [
     {
       "id": 1,
