@@ -6,8 +6,13 @@ import { Link } from "react-router-dom";
 import { CustomContext } from "../untils/Context";
 
 const Favorites = () => {
-  const { isInBasket, setIsInBasket, favoritItem, setFavoritItem } =
-    useContext(CustomContext);
+  const {
+    isInBasket,
+    setIsInBasket,
+    favoritItem,
+    setFavoritItem,
+    deletFromBasket,
+  } = useContext(CustomContext);
 
   useEffect(() => {
     axios
@@ -15,8 +20,7 @@ const Favorites = () => {
       .then((res) => setFavoritItem(res.data));
     // eslint-disable-next-line
   }, []);
-console.log(favoritItem);
-
+  
 
   return (
     <div className="favorite">
@@ -56,6 +60,7 @@ console.log(favoritItem);
                   isInBasket={isInBasket}
                   favoritItem={favoritItem}
                   setFavoritItem={setFavoritItem}
+                  deleteFromBasket={deletFromBasket}
                 />
               );
             })}

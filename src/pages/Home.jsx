@@ -1,14 +1,12 @@
 import Card from "../component/Card/Card";
 import Basket from "../component/Basket/Basket";
-import axios from "axios";
+
 import React, { useState, useContext } from "react";
 import { CustomContext } from "../untils/Context";
 const Home = ({
   addInFavorite,
   deliteFromFavorite,
-
   products,
-
   openBasket,
   setOpenBasket,
 }) => {
@@ -18,15 +16,9 @@ const Home = ({
     setIsInBasket,
     setFavoritItem,
     favoritItem,
-    count,
-    setCount,
+    deleteFromBasket,
   } = useContext(CustomContext);
 
-  const deleteFromBasket = (id) => {
-    axios.delete(`http://localhost:3004/basket/${id}`);
-
-    setIsInBasket((prev) => prev.filter((item) => item.id !== id));
-  };
   const onChangeSearchInput = (event) => {
     setInputSearch(event.target.value);
   };
@@ -38,7 +30,6 @@ const Home = ({
           setOpenBasket={setOpenBasket}
           isInBasket={isInBasket}
           deleteFromBasket={deleteFromBasket}
-          setCount={setCount}
         />
       ) : null}
 
@@ -82,8 +73,7 @@ const Home = ({
                   deliteFromFavorite={deliteFromFavorite}
                   favoritItem={favoritItem}
                   setFavoritItem={setFavoritItem}
-                  count={count}
-                  setCount={setCount}
+                  deleteFromBasket={deleteFromBasket}
                 />
               );
             })}

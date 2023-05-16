@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const Card = ({
+  deleteFromBasket,
   setIsInBasket,
   isInBasket,
   item,
@@ -19,7 +20,7 @@ const Card = ({
   }, []);
 
   const onClickAdd = () => {
-    setIsAdded((prev) => !prev);
+    // setIsAdded((prev) => !prev);
 
     if (!isAdded && !isInBasket.some((d) => d.id === item.id)) {
       setIsInBasket((prev) => [...prev, item]);
@@ -28,22 +29,28 @@ const Card = ({
     }
   };
 
-  const addInFavorite = () => {
-    if (!favoritItem.some((obj) => obj.id === item.id)) {
-      axios
-        .post("http://localhost:3004/favorite", item)
-        .catch((res) => console.log("err"));
+  const addInFavorite = (item) => {
+    if ( !favoritItem.some((obj) => obj.id === item.id)) {
+      try {
+        axios.post("http://localhost:3004/favorite", item);
+      } catch (error) {
+        console.log("error");
+      }
     }
   };
 
-  const deliteFromFavorite = () => {
-    console.log(item);
+  const deliteFromFavorite = (item) => {
+    console.log(productLiked);
+    if (favoritItem.some((obj) => obj.id === item.id)) {
+    }
     try {
       axios.delete(`http://localhost:3004/favorite/${item.id}`);
+      // setFavoritItem((prev) =>
+      //   prev.filter((item) => item.id !== favoritItem.id)
+      // );
     } catch (error) {
       console.log("err");
     }
-    setFavoritItem((prev) => prev.filter((item) => item.id !== favoritItem.id));
   };
 
   return (
@@ -52,7 +59,7 @@ const Card = ({
         <div className="content__card-top">
           <img
             onClick={() => {
-              !productLiked ? addInFavorite() : deliteFromFavorite();
+              !productLiked ? addInFavorite(item) : deliteFromFavorite(item);
               setProductLiked((prev) => !prev);
             }}
             className="content__card-heart"
@@ -74,7 +81,8 @@ const Card = ({
           <div>
             <img
               onClick={() => {
-                onClickAdd();
+                !isAdded ? onClickAdd() : deleteFromBasket(item.id);
+                setIsAdded((prev) => !prev);
               }}
               className="content__card-add"
               src={
