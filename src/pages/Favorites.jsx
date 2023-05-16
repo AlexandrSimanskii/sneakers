@@ -11,7 +11,7 @@ const Favorites = () => {
     setIsInBasket,
     favoritItem,
     setFavoritItem,
-    deletFromBasket,
+    deleteFromBasket,
   } = useContext(CustomContext);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Favorites = () => {
       .then((res) => setFavoritItem(res.data));
     // eslint-disable-next-line
   }, []);
-  
+ 
 
   return (
     <div className="favorite">
@@ -60,7 +60,7 @@ const Favorites = () => {
                   isInBasket={isInBasket}
                   favoritItem={favoritItem}
                   setFavoritItem={setFavoritItem}
-                  deleteFromBasket={deletFromBasket}
+                  deleteFromBasket={deleteFromBasket}
                 />
               );
             })}

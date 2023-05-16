@@ -23,20 +23,20 @@ const Card = ({
     // setIsAdded((prev) => !prev);
 
     if (!isAdded && !isInBasket.some((d) => d.id === item.id)) {
-      setIsInBasket((prev) => [...prev, item]);
+    setIsInBasket((prev) => [...prev, item]);
 
-      axios.post("http://localhost:3004/basket", item);
+    axios.post("http://localhost:3004/basket", item);
     }
   };
 
   const addInFavorite = (item) => {
-    if ( !favoritItem.some((obj) => obj.id === item.id)) {
+    // if (!favoritItem.some((obj) => obj.id === item.id)) {
       try {
         axios.post("http://localhost:3004/favorite", item);
       } catch (error) {
         console.log("error");
       }
-    }
+    // }
   };
 
   const deliteFromFavorite = (item) => {
@@ -52,7 +52,7 @@ const Card = ({
       console.log("err");
     }
   };
-
+  console.log(deleteFromBasket);
   return (
     <div>
       <div key={item.id} className="content__card">
