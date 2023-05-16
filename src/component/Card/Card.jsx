@@ -29,13 +29,10 @@ const Card = ({
       axios.post("http://localhost:3004/basket", item);
     }
   };
-
   const addDeleteFavorite = () => {
     setProductLiked((prev) => !prev);
 
     if (productLiked) {
-      if (favoritItem.some((obj) => obj.id === item.id)) {
-      }
       try {
         axios.delete(`http://localhost:3004/favorite/${item.id}`);
       } catch (error) {
@@ -50,7 +47,6 @@ const Card = ({
     }
   };
 
-  
   return (
     <div>
       <div key={item.id} className="content__card">
