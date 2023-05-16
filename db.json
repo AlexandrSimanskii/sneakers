@@ -10,10 +10,16 @@
   "purchases": [],
   "favorite": [
     {
-      "id": 4,
-      "img": "images/img/image 4.jpg",
-      "model": "Kроссовки Puma X Aka Boku Future Rider",
-      "prise": 8999
+      "id": 1,
+      "img": "images/img/image 1.jpg",
+      "model": "Мужские Кроссовки Nike Blazer Mid Suede",
+      "prise": "12999"
+    },
+    {
+      "id": 2,
+      "img": "images/img/image 2.jpg",
+      "model": "Мужские Кроссовки Nike Air Max 270",
+      "prise": 12999
     },
     {
       "id": 3,
@@ -22,10 +28,10 @@
       "prise": 8499
     },
     {
-      "id": 1,
-      "img": "images/img/image 1.jpg",
-      "model": "Мужские Кроссовки Nike Blazer Mid Suede",
-      "prise": "12999"
+      "id": 4,
+      "img": "images/img/image 4.jpg",
+      "model": "Kроссовки Puma X Aka Boku Future Rider",
+      "prise": 8999
     }
   ],
   "products": [

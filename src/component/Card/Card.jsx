@@ -29,22 +29,17 @@ const Card = ({
       axios.post("http://localhost:3004/basket", item);
     }
   };
-  const addDeleteFavorite = () => {
-    setProductLiked((prev) => !prev);
-
-    if (productLiked) {
-      try {
-        axios.delete(`http://localhost:3004/favorite/${item.id}`);
-      } catch (error) {
-        console.log("err");
-      }
+  const addDeleteFavorite = async () => {
+    if (productLiked && favoritItem.some((obj) => obj.id === item.id)) {
+      console.log("delete");
+      axios.delete(`http://localhost:3004/favorite/${item.id}`);
+      setFavoritItem((prev) => prev.filter((obj) => obj.id !== item.id));
     } else {
-      try {
-        axios.post("http://localhost:3004/favorite", item);
-      } catch (error) {
-        console.log("error");
-      }
+      console.log("add");
+      await axios.post("http://localhost:3004/favorite", item);
+      setFavoritItem((prev) => [...prev, item]);
     }
+    setProductLiked((prev) => !prev);
   };
 
   return (
