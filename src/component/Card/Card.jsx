@@ -10,15 +10,13 @@ const Card = ({
   favoritItem,
   setFavoritItem,
   added,
+  like
 }) => {
-  const [productLiked, setProductLiked] = useState(false);
+  const [productLiked, setProductLiked] = useState(like);
   const [isAdded, setIsAdded] = useState(added);
-  const { pathname } = useLocation();
+ 
 
-  useEffect(() => {
-    setProductLiked(pathname === "/favorites" ? true : false);
-    // eslint-disable-next-line
-  }, []);
+ 
 
   const onClickAdd = () => {
     // setIsAdded((prev) => !prev);

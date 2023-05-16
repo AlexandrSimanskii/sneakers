@@ -10,7 +10,7 @@ import { CustomContext } from "./untils/Context";
 const App = () => {
   const [openBasket, setOpenBasket] = useState(false);
   const [products, setProducts] = useState([]);
-  const { setIsInBasket, setFavoritItem } = useContext(CustomContext);
+  const { setIsInBasket, setFavoritItem, } = useContext(CustomContext);
 
   useEffect(() => {
     axios.get("http://localhost:3004/basket").then((res) => {
