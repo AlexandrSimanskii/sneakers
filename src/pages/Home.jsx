@@ -74,6 +74,7 @@ const Home = ({
                   favoritItem={favoritItem}
                   setFavoritItem={setFavoritItem}
                   deleteFromBasket={deleteFromBasket}
+                  added={isInBasket.some((obj)=>obj.id === item.id)}
                 />
               );
             })}

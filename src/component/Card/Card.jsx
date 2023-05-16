@@ -9,9 +9,10 @@ const Card = ({
   item,
   favoritItem,
   setFavoritItem,
+  added
 }) => {
   const [productLiked, setProductLiked] = useState(false);
-  const [isAdded, setIsAdded] = useState(false);
+  const [isAdded, setIsAdded] = useState(added);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const Card = ({
   };
 
   const deliteFromFavorite = (item) => {
-    console.log(productLiked);
+    
     if (favoritItem.some((obj) => obj.id === item.id)) {
     }
     try {
