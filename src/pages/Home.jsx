@@ -22,7 +22,7 @@ const Home = ({
   const onChangeSearchInput = (event) => {
     setInputSearch(event.target.value);
   };
- console.log(favoritItem);
+ 
   return (
     <>
       {openBasket ? (
@@ -76,6 +76,7 @@ const Home = ({
                   deleteFromBasket={deleteFromBasket}
                   added={isInBasket.some((obj)=>obj.id === item.id)}
                   like={favoritItem.some((obj)=>obj.id === item.id)}
+                  loading={false}
                 />
               );
             })}

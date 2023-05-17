@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-
+import React, { useState } from "react";
+import {} from "react-router-dom";
+import ContentLoader from "react-content-loader";
 const Card = ({
   deleteFromBasket,
   setIsInBasket,
@@ -10,13 +10,11 @@ const Card = ({
   favoritItem,
   setFavoritItem,
   added,
-  like
+  like,
+  loading,
 }) => {
   const [productLiked, setProductLiked] = useState(like);
   const [isAdded, setIsAdded] = useState(added);
- 
-
- 
 
   const onClickAdd = () => {
     // setIsAdded((prev) => !prev);
@@ -43,41 +41,62 @@ const Card = ({
   return (
     <div>
       <div key={item.id} className="content__card">
-        <div className="content__card-top">
-          <img
-            onClick={() => {
-              addDeleteFavorite();
-            }}
-            className="content__card-heart"
-            src={
-              productLiked
-                ? "/images/icons/like.svg"
-                : "/images/icons/unlike.png"
-            }
-            alt="heart"
-          />
-        </div>
-        <img width={133} src={item.img} alt="sneakers" />
-        <h4 className="content__card-title">{item.model}</h4>
-        <div className="content__card-prise">
-          <div>
-            <p>ЦЕНА:</p>
-            <p className="content__card-amount">{item.prise} руб</p>
-          </div>
-          <div>
-            <img
-              onClick={() => {
-                !isAdded ? onClickAdd() : deleteFromBasket(item.id);
-                setIsAdded((prev) => !prev);
-              }}
-              className="content__card-add"
-              src={
-                !isAdded ? "/images/icons/add.svg" : "/images/icons/cheked.svg"
-              }
-              alt="added"
-            />
-          </div>
-        </div>
+        {loading ? (
+          <ContentLoader
+            speed={2}
+            width={210}
+            height={240}
+            viewBox="0 0 210 260"
+            backgroundColor="#e6e6e6"
+            foregroundColor="#dcdada"
+          >
+            <rect x="7" y="0" rx="3" ry="3" width="150" height="91" />
+            <rect x="7" y="109" rx="3" ry="3" width="150" height="15" />
+            \ <rect x="7" y="133" rx="3" ry="3" width="93" height="15" />
+            <rect x="7" y="180" rx="3" ry="3" width="80" height="24" />
+            <rect x="118" y="174" rx="3" ry="3" width="32" height="32" />
+          </ContentLoader>
+        ) : (
+          <>
+            <div className="content__card-top">
+              <img
+                onClick={() => {
+                  addDeleteFavorite();
+                }}
+                className="content__card-heart"
+                src={
+                  productLiked
+                    ? "/images/icons/like.svg"
+                    : "/images/icons/unlike.png"
+                }
+                alt="heart"
+              />
+            </div>
+            <img width={133} src={item.img} alt="sneakers" />
+            <h4 className="content__card-title">{item.model}</h4>
+            <div className="content__card-prise">
+              <div>
+                <p>ЦЕНА:</p>
+                <p className="content__card-amount">{item.prise} руб</p>
+              </div>
+              <div>
+                <img
+                  onClick={() => {
+                    !isAdded ? onClickAdd() : deleteFromBasket(item.id);
+                    setIsAdded((prev) => !prev);
+                  }}
+                  className="content__card-add"
+                  src={
+                    !isAdded
+                      ? "/images/icons/add.svg"
+                      : "/images/icons/cheked.svg"
+                  }
+                  alt="added"
+                />
+              </div>
+            </div>{" "}
+          </>
+        )}
       </div>
     </div>
   );
