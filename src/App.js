@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import "./style/style.scss";
 import Header from "./component/Header/Header";
-import axios from "axios";
+import axios from "./untils/axios";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
@@ -10,21 +10,20 @@ import { CustomContext } from "./untils/Context";
 const App = () => {
   const [openBasket, setOpenBasket] = useState(false);
   const [products, setProducts] = useState([]);
-  const { setIsInBasket, setFavoritItem, } = useContext(CustomContext);
+  const { setIsInBasket, setFavoritItem } = useContext(CustomContext);
 
   useEffect(() => {
-    axios.get("http://localhost:3004/basket").then((res) => {
-      setIsInBasket(res.data);
-    });
+    async function fetchData() {
+      const basketResponse = await axios.get("/Basket");
+      const favoriteResponse = await axios.get("/favorite");
+      const itemResponse = await axios.get("/products");
 
-    axios.get("http://localhost:3004/products").then((res) => {
-      setProducts(res.data);
-    });
-
-    axios.get("http://localhost:3004/favorite").then((res) => {
-      setFavoritItem(res.data);
-    });
-
+      
+      setIsInBasket(basketResponse.data);
+      setProducts(itemResponse.data);
+      setFavoritItem(favoriteResponse.data);
+    }
+    fetchData()
     // eslint-disable-next-line
   }, []);
 

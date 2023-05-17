@@ -10,10 +10,10 @@
   "purchases": [],
   "favorite": [
     {
-      "id": 1,
-      "img": "images/img/image 1.jpg",
+      "id": 3,
+      "img": "images/img/image 3.jpg",
       "model": "Мужские Кроссовки Nike Blazer Mid Suede",
-      "prise": "12999"
+      "prise": 8499
     },
     {
       "id": 2,
@@ -22,10 +22,10 @@
       "prise": 12999
     },
     {
-      "id": 3,
-      "img": "images/img/image 3.jpg",
+      "id": 1,
+      "img": "images/img/image 1.jpg",
       "model": "Мужские Кроссовки Nike Blazer Mid Suede",
-      "prise": 8499
+      "prise": "12999"
     }
   ],
   "products": [
