@@ -38,10 +38,10 @@ const Card = ({
     }
     setProductLiked((prev) => !prev);
   };
-  
+  console.log(loadingFinish);
   return (
     <div>
-      <div key={item.id} className="content__card">
+      <div className="content__card">
         {loadingFinish ? (
           <>
             <div className="content__card-top">

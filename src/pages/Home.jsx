@@ -24,6 +24,8 @@ const Home = ({
     setInputSearch(event.target.value);
   };
 
+
+
   const renderCard = () => {
     return products
       .filter((item) =>
