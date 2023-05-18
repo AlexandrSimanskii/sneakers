@@ -6,7 +6,7 @@ export const CustomContext = createContext();
 export const Context = (props) => {
   const [isInBasket, setIsInBasket] = useState([]);
   const [favoritItem, setFavoritItem] = useState([]);
-  const [loadingFinish, setLoadingFinish] = useState(false);
+
   const deleteFromBasket = (id) => {
     axios.delete(`http://localhost:3004/basket/${id}`);
 
@@ -19,8 +19,7 @@ export const Context = (props) => {
     setIsInBasket,
     favoritItem,
     setFavoritItem,
-    loadingFinish,
-    setLoadingFinish,
+   
   };
 
   return (
