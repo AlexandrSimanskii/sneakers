@@ -38,7 +38,7 @@ const Card = ({
     }
     setProductLiked((prev) => !prev);
   };
-  console.log(loadingFinish);
+  
   return (
     <div>
       <div key={item.id} className="content__card">
