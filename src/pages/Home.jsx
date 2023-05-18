@@ -9,6 +9,7 @@ const Home = ({
   products,
   openBasket,
   setOpenBasket,
+  loadingFinish,
 }) => {
   const [inputSearch, setInputSearch] = useState("");
   const {
@@ -21,6 +22,31 @@ const Home = ({
 
   const onChangeSearchInput = (event) => {
     setInputSearch(event.target.value);
+  };
+
+  const renderCard = () => {
+    return products
+      .filter((item) =>
+        item.model.toLowerCase().includes(inputSearch.toLowerCase())
+      )
+      .map((item) => {
+        return (
+          <Card
+            key={item.id}
+            item={item}
+            setIsInBasket={setIsInBasket}
+            isInBasket={isInBasket}
+            addInFavorite={addInFavorite}
+            deliteFromFavorite={deliteFromFavorite}
+            favoritItem={favoritItem}
+            setFavoritItem={setFavoritItem}
+            deleteFromBasket={deleteFromBasket}
+            added={isInBasket.some((obj) => obj.id === item.id)}
+            like={favoritItem.some((obj) => obj.id === item.id)}
+            loadingFinish={loadingFinish}
+          />
+        );
+      });
   };
  
   return (
@@ -57,30 +83,7 @@ const Home = ({
           </div>
         </div>
 
-        <div className="content__cards">
-          {products
-            .filter((item) =>
-              item.model.toLowerCase().includes(inputSearch.toLowerCase())
-            )
-            .map((item) => {
-              return (
-                <Card
-                  key={item.id}
-                  item={item}
-                  setIsInBasket={setIsInBasket}
-                  isInBasket={isInBasket}
-                  addInFavorite={addInFavorite}
-                  deliteFromFavorite={deliteFromFavorite}
-                  favoritItem={favoritItem}
-                  setFavoritItem={setFavoritItem}
-                  deleteFromBasket={deleteFromBasket}
-                  added={isInBasket.some((obj)=>obj.id === item.id)}
-                  like={favoritItem.some((obj)=>obj.id === item.id)}
-                  loading={false}
-                />
-              );
-            })}
-        </div>
+        <div className="content__cards">{renderCard()}</div>
       </div>
     </>
   );

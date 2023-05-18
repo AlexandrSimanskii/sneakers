@@ -10,23 +10,28 @@ import { CustomContext } from "./untils/Context";
 const App = () => {
   const [openBasket, setOpenBasket] = useState(false);
   const [products, setProducts] = useState([]);
-  const { setIsInBasket, setFavoritItem } = useContext(CustomContext);
+ 
+  const { setIsInBasket, setFavoritItem,setLoadingFinish,loadingFinish } = useContext(CustomContext);
 
   useEffect(() => {
+    
     async function fetchData() {
+      
+
       const basketResponse = await axios.get("/Basket");
       const favoriteResponse = await axios.get("/favorite");
       const itemResponse = await axios.get("/products");
+     
+setLoadingFinish(true)
 
-      
       setIsInBasket(basketResponse.data);
       setProducts(itemResponse.data);
       setFavoritItem(favoriteResponse.data);
     }
-    fetchData()
+    fetchData();
     // eslint-disable-next-line
   }, []);
-
+console.log(loadingFinish);
   return (
     <div className="loyout">
       <div className="wrapper">
@@ -39,6 +44,7 @@ const App = () => {
                 openBasket={openBasket}
                 setOpenBasket={setOpenBasket}
                 products={products}
+               
               />
             }
           />
