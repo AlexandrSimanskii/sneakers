@@ -13,12 +13,15 @@ const Card = ({
   added,
   like,
   loadingFinish,
+  isPresentInBasket
+  
 }) => {
+  console.log(isPresentInBasket);
   const [productLiked, setProductLiked] = useState(like);
-  const [isAdded, setIsAdded] = useState(added);
+  const [isAdded, setIsAdded] = useState(isPresentInBasket);
 
   const onClickAdd = () => {
-    // setIsAdded((prev) => !prev);
+    
 
     if (!isAdded && !isInBasket.some((d) => d.id === item.id)) {
       setIsInBasket((prev) => [...prev, item]);
@@ -38,7 +41,8 @@ const Card = ({
     }
     setProductLiked((prev) => !prev);
   };
-  console.log(loadingFinish);
+
+  
   return (
     <div>
       <div className="content__card">
@@ -73,9 +77,9 @@ const Card = ({
                   }}
                   className="content__card-add"
                   src={
-                    !isAdded
-                      ? "/images/icons/add.svg"
-                      : "/images/icons/cheked.svg"
+                    isAdded
+                      ? "/images/icons/cheked.svg"
+                      : "/images/icons/add.svg"
                   }
                   alt="added"
                 />

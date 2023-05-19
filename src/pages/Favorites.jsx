@@ -5,7 +5,7 @@ import Card from "../component/Card/Card";
 import { Link } from "react-router-dom";
 import { CustomContext } from "../untils/Context";
 
-const Favorites = () => {
+const Favorites = (loadingFinish) => {
   const {
     isInBasket,
     setIsInBasket,
@@ -20,7 +20,6 @@ const Favorites = () => {
       .then((res) => setFavoritItem(res.data));
     // eslint-disable-next-line
   }, []);
- 
 
   return (
     <div className="favorite">
@@ -61,8 +60,9 @@ const Favorites = () => {
                   favoritItem={favoritItem}
                   setFavoritItem={setFavoritItem}
                   deleteFromBasket={deleteFromBasket}
-                  added={isInBasket.some((obj)=>obj.id === item.id)}
+                  added={isInBasket.some((obj) => obj.id === item.id)}
                   like={true}
+                  loadingFinish={loadingFinish}
                 />
               );
             })}

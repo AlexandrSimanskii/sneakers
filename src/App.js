@@ -28,7 +28,7 @@ const App = () => {
     fetchData();
     // eslint-disable-next-line
   }, []);
-  console.log(loadingFinish);
+
   return (
     <div className="loyout">
       <div className="wrapper">
@@ -46,7 +46,7 @@ const App = () => {
               />
             }
           />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/favorites" element={<Favorites loadingFinish={loadingFinish} />} />
         </Routes>
       </div>
     </div>

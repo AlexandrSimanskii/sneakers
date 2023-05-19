@@ -9,8 +9,11 @@ export const Context = (props) => {
 
   const deleteFromBasket = (id) => {
     axios.delete(`http://localhost:3004/basket/${id}`);
-
     setIsInBasket((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const isPresentInBasket = (id) => {
+    return isInBasket.some((obj) => obj.id === id);
   };
 
   const value = {
@@ -19,7 +22,7 @@ export const Context = (props) => {
     setIsInBasket,
     favoritItem,
     setFavoritItem,
-   
+    isPresentInBasket,
   };
 
   return (
