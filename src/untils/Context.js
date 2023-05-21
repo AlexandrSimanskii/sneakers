@@ -12,9 +12,7 @@ export const Context = (props) => {
     setIsInBasket((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const isPresentInBasket = (item) => {
-    return isInBasket.some((obj) => obj.id === item.id);
-  };
+
 
   const value = {
     deleteFromBasket,
@@ -22,7 +20,7 @@ export const Context = (props) => {
     setIsInBasket,
     favoritItem,
     setFavoritItem,
-    isPresentInBasket,
+    // isPresentInBasket,
   };
 
   return (

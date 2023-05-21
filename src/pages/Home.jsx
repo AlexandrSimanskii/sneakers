@@ -14,7 +14,7 @@ const Home = ({
   const [inputSearch, setInputSearch] = useState("");
 
   const {
-    isPresentInBasket,
+   
     isInBasket,
     setIsInBasket,
     setFavoritItem,
@@ -47,8 +47,9 @@ const Home = ({
           favoritItem={favoritItem}
           setFavoritItem={setFavoritItem}
           deleteFromBasket={deleteFromBasket}
-         isPresentInBasket={isPresentInBasket( item)}
+      
           like={ favoritItem.some((obj) => obj.id === item.id)}
+          added={isInBasket.some((obj) => obj.id ===item.id)}
           loadingFinish={loadingFinish}
         />
       );

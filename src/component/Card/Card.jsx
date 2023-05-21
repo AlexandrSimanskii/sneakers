@@ -13,14 +13,19 @@ const Card = ({
   added,
   like,
   loadingFinish,
-  isPresentInBasket,
-}) => {
-  const [productLiked, setProductLiked] = useState(like);
-  const [isAdded, setIsAdded] = useState(false);
   
-useEffect(()=>{setProductLiked(like)},[favoritItem])
+}) => {
+  const [productLiked, setProductLiked] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
 
-console.log(isInBasket);
+  useEffect(() => {
+    setProductLiked(like); // eslint-disable-next-line
+  }, [favoritItem]);
+  useEffect(() => {
+    setIsAdded(added); // eslint-disable-next-line
+  }, [isInBasket]);
+
+  console.log(isInBasket);
 
   const onClickAdd = () => {
     if (!isAdded && !isInBasket.some((d) => d.id === item.id)) {
@@ -41,7 +46,6 @@ console.log(isInBasket);
     }
     setProductLiked((prev) => !prev);
   };
-
 
   return (
     <div>
