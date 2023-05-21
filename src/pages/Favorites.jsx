@@ -5,7 +5,7 @@ import Card from "../component/Card/Card";
 import { Link } from "react-router-dom";
 import { CustomContext } from "../untils/Context";
 
-const Favorites = (loadingFinish) => {
+const Favorites = ({loadingFinish}) => {
   const {
     isInBasket,
     setIsInBasket,

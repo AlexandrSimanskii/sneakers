@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import ContentLoader from "react-content-loader";
 
@@ -13,16 +13,16 @@ const Card = ({
   added,
   like,
   loadingFinish,
-  isPresentInBasket
-  
+  isPresentInBasket,
 }) => {
-  console.log(isPresentInBasket);
   const [productLiked, setProductLiked] = useState(like);
-  const [isAdded, setIsAdded] = useState(isPresentInBasket);
+  const [isAdded, setIsAdded] = useState(false);
+  
+useEffect(()=>{setProductLiked(like)},[favoritItem])
+
+console.log(isInBasket);
 
   const onClickAdd = () => {
-    
-
     if (!isAdded && !isInBasket.some((d) => d.id === item.id)) {
       setIsInBasket((prev) => [...prev, item]);
 
@@ -42,7 +42,7 @@ const Card = ({
     setProductLiked((prev) => !prev);
   };
 
-  
+
   return (
     <div>
       <div className="content__card">
@@ -84,7 +84,7 @@ const Card = ({
                   alt="added"
                 />
               </div>
-            </div>{" "}
+            </div>
           </>
         ) : (
           <ContentLoader

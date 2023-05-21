@@ -47,10 +47,9 @@ const Home = ({
           favoritItem={favoritItem}
           setFavoritItem={setFavoritItem}
           deleteFromBasket={deleteFromBasket}
-          isPresentInBasket={isPresentInBasket(item.id)}
-          like={favoritItem.some((obj) => obj.id === item.id)}
+         isPresentInBasket={isPresentInBasket( item)}
+          like={ favoritItem.some((obj) => obj.id === item.id)}
           loadingFinish={loadingFinish}
-         
         />
       );
     });
