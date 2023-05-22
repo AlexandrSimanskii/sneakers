@@ -4,6 +4,7 @@ import React, { useEffect, useContext } from "react";
 import Card from "../component/Card/Card";
 import { Link } from "react-router-dom";
 import { CustomContext } from "../untils/Context";
+import EmptyInfo from "../component/EmptyInfo/EmptyInfo";
 
 const Favorites = ({ loadingFinish }) => {
   const {
@@ -24,23 +25,9 @@ const Favorites = ({ loadingFinish }) => {
   return (
     <div className="favorite">
       {favoritItem.length === 0 ? (
-        <div className="favorite__empty">
-          <img src="./images/img/smile1.png" alt="smile" />
-          <h3 className="favorite__empty-title">Закладок нет :(</h3>
-          <p className="favorite__empty-subtitle">
-            Вы ничего не добавляли в закладки
-          </p>
-          <Link to={"/"}>
-            <button className="basket__btn favorite__empty-btn">
-              <img
-                className="basket__btn-empty"
-                src="/images/icons/Arrow.svg"
-                alt="Arrow"
-              />
-              Вернуться назад
-            </button>
-          </Link>
-        </div>
+      <EmptyInfo 
+      discription={"Вы ничего не добавляли в закладки"} img={"/images/img/smile1.png"}
+      title={"Закладок нет :("}/>
       ) : (
         <>
           <div className="favorite__top">

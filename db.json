@@ -1,20 +1,17 @@
 {
   "basket": [
     {
-      "id": 2,
-      "img": "images/img/image 2.jpg",
-      "model": "Мужские Кроссовки Nike Air Max 270",
-      "prise": 12999
-    },
-    {
       "id": 6,
       "img": "images/img/image 6.jpg",
       "model": "Мужские Кроссовки Nike Kyrie 7",
       "prise": 11999
-    }
-  ],
-  "purchases": [],
-  "favorite": [
+    },
+    {
+      "id": 4,
+      "img": "images/img/image 4.jpg",
+      "model": "Kроссовки Puma X Aka Boku Future Rider",
+      "prise": 8999
+    },
     {
       "id": 3,
       "img": "images/img/image 3.jpg",
@@ -22,6 +19,8 @@
       "prise": 8499
     }
   ],
+  "purchases": [],
+  "favorite": [],
   "products": [
     {
       "id": 1,
