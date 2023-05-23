@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+
 import { CustomContext } from "../../untils/Context";
 import axios from "../../untils/axios";
 
 const Basket = ({ setOpenBasket }) => {
-  const [orderIsCompleted, setOrderIsCompleted] = useState(false);
+  const [orderIsCompleted, setOrderIsCompleted] = useState(true);
 
   const {
     myPurches,
@@ -17,13 +17,11 @@ const Basket = ({ setOpenBasket }) => {
   const renderMyPurches = async () => {
     await isInBasket.map((item) => axios.post("/order", item));
     setMyPurches(isInBasket);
-     isInBasket.map((item) => axios.delete(`/basket/${item.id}`));
-
+    isInBasket.map((item) => axios.delete(`/basket/${item.id}`));
     setIsInBasket([]);
+    setOrderIsCompleted(false)
   };
-  console.log(isInBasket);
-  console.log(myPurches);
-
+console.log(myPurches);
   return (
     <div className="shadow">
       <div className="overlay"></div>
@@ -75,21 +73,19 @@ const Basket = ({ setOpenBasket }) => {
                 <b>12%</b>
               </li>
               <li>
-                <Link to={"/purches"}>
-                  <button
-                    onClick={() => {
-                      renderMyPurches();
-                    }}
-                    className="basket__btn"
-                  >
-                    Оформить заказ
-                    <img
-                      className="basket__btn-full"
-                      src="/images/icons/Arrow.svg"
-                      alt="arrow"
-                    />
-                  </button>
-                </Link>
+                <button
+                  onClick={() => {
+                    renderMyPurches();
+                  }}
+                  className="basket__btn"
+                >
+                  Оформить заказ
+                  <img
+                    className="basket__btn-full"
+                    src="/images/icons/Arrow.svg"
+                    alt="arrow"
+                  />
+                </button>
               </li>
             </ul>
           </>

@@ -14,25 +14,28 @@ const Header = ({ setOpenBasket }) => {
 
       <ul className="header__right">
         <li className="header__right-li">
-          <img
+         <Link to={"/"}> <img
             onClick={() => setOpenBasket(true)}
             src="/images/icons/basket.svg"
             alt="basket"
-          />
+          /></Link>
 
           <span className="header__right-count">1205 руб</span>
         </li>
 
         <li>
           <Link to={"/favorites"}>
-            <img src="/images/icons/heart.svg" alt="heart" />
+            {/* <img src="/images/icons/heart.svg" alt="heart" /> */}
+            Нравится
           </Link>
         </li>
         <li>
           <Link to={"/"}>
-            <img src="/images/icons/user.svg" alt="user" />
+            {/* <img src="/images/icons/user.svg" alt="user" /> */}
+            Главная
           </Link>
         </li>
+        <li><Link to={"/purches"}>Приобретенный товар</Link></li>
       </ul>
     </header>
   );

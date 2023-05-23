@@ -16,7 +16,7 @@ const Favorites = ({ loadingFinish }) => {
         />
       ) : (
         
-        <Inform title={"мои закладки"}
+        <Inform title={"Mои закладки"}
         loadingFinish={loadingFinish} />
       )}
     </div>
