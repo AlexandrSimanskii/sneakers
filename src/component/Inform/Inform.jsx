@@ -1,16 +1,22 @@
-import React, { useContext,useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import Card from "../Card/Card";
 import { CustomContext } from "../../untils/Context";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-const Inform = ({loadingFinish,title}) => {
-  const {
+const Inform = ({ loadingFinish, title }) => {
+  const {setMyPurches,
+    myPurches,
     isInBasket,
     setIsInBasket,
     favoritItem,
     setFavoritItem,
     deleteFromBasket,
   } = useContext(CustomContext);
+// useEffect(()=>{ 
+//   setMyPurches(isInBasket)
+//   setIsInBasket([])
+// },[]
+// )
 
   useEffect(() => {
     axios
@@ -18,8 +24,8 @@ const Inform = ({loadingFinish,title}) => {
       .then((res) => setFavoritItem(res.data));
     // eslint-disable-next-line
   }, []);
-const {pathname} =useLocation()
-console.log(pathname);
+  const { pathname } = useLocation();
+  console.log(myPurches);
 
   return (
     <>
@@ -30,7 +36,7 @@ console.log(pathname);
         <h2 className="favorite__top-title">{title}</h2>
       </div>
       <div className="content__cards">
-        {favoritItem.map((item) => {
+        {(pathname === "/purches" ? myPurches: favoritItem).map((item) => {
           return (
             <Card
               key={item.id}

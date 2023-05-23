@@ -14,6 +14,7 @@ const Card = ({
   like,
   loadingFinish,
   
+  
 }) => {
   const [productLiked, setProductLiked] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
@@ -25,7 +26,7 @@ const Card = ({
     setIsAdded(added); // eslint-disable-next-line
   }, [isInBasket]);
 
-  console.log(isInBasket);
+ 
 
   const onClickAdd = () => {
     if (!isAdded && !isInBasket.some((d) => d.id === item.id)) {

@@ -1,14 +1,15 @@
 import { createContext } from "react";
 import { useState } from "react";
-import axios from "axios";
+import axios from "../untils/axios";
 export const CustomContext = createContext();
 
 export const Context = (props) => {
   const [isInBasket, setIsInBasket] = useState([]);
   const [favoritItem, setFavoritItem] = useState([]);
+  const [myPurches, setMyPurches] = useState([]);
 
   const deleteFromBasket = (id) => {
-    axios.delete(`http://localhost:3004/basket/${id}`);
+    axios.delete(`/basket/${id}`);
     setIsInBasket((prev) => prev.filter((item) => item.id !== id));
   };
 
@@ -23,6 +24,8 @@ export const Context = (props) => {
     favoritItem,
     setFavoritItem,
     isPresentInBasket,
+    myPurches,
+    setMyPurches,
   };
 
   return (

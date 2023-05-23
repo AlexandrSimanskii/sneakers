@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-const Basket = ({ setOpenBasket, isInBasket, deleteFromBasket }) => {
+import { CustomContext } from "../../untils/Context";
+import axios from "../../untils/axios";
+
+const Basket = ({ setOpenBasket }) => {
+  const [orderIsCompleted, setOrderIsCompleted] = useState(false);
+
+  const {
+    myPurches,
+    setMyPurches,
+    setIsInBasket,
+    isInBasket,
+    deleteFromBasket,
+  } = useContext(CustomContext);
+
+  const renderMyPurches = async () => {
+    await isInBasket.map((item) => axios.post("/order", item));
+    setMyPurches(isInBasket);
+     isInBasket.map((item) => axios.delete(`/basket/${item.id}`));
+
+    setIsInBasket([]);
+  };
+  console.log(isInBasket);
+  console.log(myPurches);
+
   return (
     <div className="shadow">
       <div className="overlay"></div>
@@ -52,23 +75,41 @@ const Basket = ({ setOpenBasket, isInBasket, deleteFromBasket }) => {
                 <b>12%</b>
               </li>
               <li>
-              <Link to={"/purches"}>  <button className="basket__btn">
-                  Оформить заказ
-                  <img
-                    className="basket__btn-full"
-                    src="/images/icons/Arrow.svg"
-                    alt="arrow"
-                  />
-                </button></Link>
+                <Link to={"/purches"}>
+                  <button
+                    onClick={() => {
+                      renderMyPurches();
+                    }}
+                    className="basket__btn"
+                  >
+                    Оформить заказ
+                    <img
+                      className="basket__btn-full"
+                      src="/images/icons/Arrow.svg"
+                      alt="arrow"
+                    />
+                  </button>
+                </Link>
               </li>
             </ul>
           </>
         ) : (
           <div className="basket__empty">
-            <img src="/images/img/empty box.png" alt="empty box" />
-            <h2 className="basket__empty-title">Корзина пустая</h2>
+            <img
+              src={
+                orderIsCompleted
+                  ? "/images/img/emptyBox.png"
+                  : "/images/img/orderProcessed.jpg"
+              }
+              alt="empty box"
+            />
+            <h2 className="basket__empty-title">
+              {orderIsCompleted ? "Корзина пустая" : "Заказ оформлен"}
+            </h2>
             <p className="basket__empty-text">
-              Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.
+              {orderIsCompleted
+                ? " Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."
+                : "Ваш заказ #18 скоро будет передан курьерской доставке"}
             </p>
             <button
               onClick={() => {
