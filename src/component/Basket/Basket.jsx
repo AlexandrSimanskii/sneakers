@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Basket = ({ setOpenBasket, isInBasket, deleteFromBasket }) => {
   return (
     <div className="shadow">
@@ -52,14 +52,14 @@ const Basket = ({ setOpenBasket, isInBasket, deleteFromBasket }) => {
                 <b>12%</b>
               </li>
               <li>
-                <button className="basket__btn">
+              <Link to={"/purches"}>  <button className="basket__btn">
                   Оформить заказ
                   <img
                     className="basket__btn-full"
                     src="/images/icons/Arrow.svg"
                     alt="arrow"
                   />
-                </button>
+                </button></Link>
               </li>
             </ul>
           </>

@@ -1,6 +1,4 @@
-
-
-import React, {  useContext } from "react";
+import React, { useContext } from "react";
 import { CustomContext } from "../untils/Context";
 import EmptyInfo from "../component/EmptyInfo/EmptyInfo";
 import Inform from "../component/Inform/Inform";
@@ -17,7 +15,9 @@ const Favorites = ({ loadingFinish }) => {
           title={"Закладок нет :("}
         />
       ) : (
-        <Inform loadingFinish={loadingFinish} />
+        
+        <Inform title={"мои закладки"}
+        loadingFinish={loadingFinish} />
       )}
     </div>
   );

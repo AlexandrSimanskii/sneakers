@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import { CustomContext } from "./untils/Context";
+import MyPurchases from "./pages/MyPurchases";
 
 const App = () => {
   const [openBasket, setOpenBasket] = useState(false);
@@ -41,12 +42,16 @@ const App = () => {
                 openBasket={openBasket}
                 setOpenBasket={setOpenBasket}
                 products={products}
-               loadingFinish={loadingFinish}
-               setLoadingFinish={setLoadingFinish}
+                loadingFinish={loadingFinish}
+                setLoadingFinish={setLoadingFinish}
               />
             }
           />
-          <Route path="/favorites" element={<Favorites loadingFinish={loadingFinish} />} />
+          <Route
+            path="/favorites"
+            element={<Favorites loadingFinish={loadingFinish} />}
+          />
+          <Route path="/purches" element={<MyPurchases loadingFinish={loadingFinish} />} />
         </Routes>
       </div>
     </div>
