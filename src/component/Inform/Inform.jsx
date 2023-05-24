@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 const Inform = ({ loadingFinish, title }) => {
   const { pathname } = useLocation();
 
-  console.log(pathname);
+  // console.log(pathname);
   const {
     myPurches,
     isInBasket,
@@ -32,7 +32,7 @@ const Inform = ({ loadingFinish, title }) => {
         <h2 className="favorite__top-title">{title}</h2>
       </div>
       <div className="content__cards">
-        {(pathname === "/purches" ? favoritItem : myPurches).map((item) => {
+        {(pathname === "/purches" ? myPurches : favoritItem).map((item) => {
           return (
             <Card
               key={item.id}
@@ -45,6 +45,7 @@ const Inform = ({ loadingFinish, title }) => {
               added={isInBasket.some((obj) => obj.id === item.id)}
               like={pathname !== "/purches"}
               loadingFinish={loadingFinish}
+              pathname={pathname}
             />
           );
         })}

@@ -13,8 +13,7 @@ const Card = ({
   added,
   like,
   loadingFinish,
-  
-  
+  pathname,
 }) => {
   const [productLiked, setProductLiked] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
@@ -25,8 +24,6 @@ const Card = ({
   useEffect(() => {
     setIsAdded(added); // eslint-disable-next-line
   }, [isInBasket]);
-
- 
 
   const onClickAdd = () => {
     if (!isAdded && !isInBasket.some((d) => d.id === item.id)) {
@@ -47,25 +44,28 @@ const Card = ({
     }
     setProductLiked((prev) => !prev);
   };
-
+ 
   return (
     <div>
       <div className="content__card">
         {loadingFinish ? (
           <>
             <div className="content__card-top">
-              <img
-                onClick={() => {
-                  addDeleteFavorite();
-                }}
-                className="content__card-heart"
-                src={
-                  productLiked
-                    ? "/images/icons/like.svg"
-                    : "/images/icons/unlike.png"
-                }
-                alt="heart"
-              />
+              {pathname === "/purches" ? null : (
+                <img
+                  onClick={() => {
+                    addDeleteFavorite();
+                    
+                  }}
+                  className="content__card-heart"
+                  src={
+                    productLiked
+                      ? "/images/icons/like.svg"
+                      : "/images/icons/unlike.png"
+                  }
+                  alt="heart"
+                />
+              )}
             </div>
             <img width={133} src={item.img} alt="sneakers" />
             <h4 className="content__card-title">{item.model}</h4>
@@ -75,19 +75,23 @@ const Card = ({
                 <p className="content__card-amount">{item.prise} руб</p>
               </div>
               <div>
-                <img
-                  onClick={() => {
-                    !isAdded ? onClickAdd() : deleteFromBasket(item.id);
-                    setIsAdded((prev) => !prev);
-                  }}
-                  className="content__card-add"
-                  src={
-                    isAdded
-                      ? "/images/icons/cheked.svg"
-                      : "/images/icons/add.svg"
-                  }
-                  alt="added"
-                />
+                {
+                  (pathname === "/purches" ? null : (
+                    <img
+                      onClick={() => {
+                        !isAdded ? onClickAdd() : deleteFromBasket(item.id);
+                        setIsAdded((prev) => !prev);
+                      }}
+                      className="content__card-add"
+                      src={
+                        isAdded
+                          ? "/images/icons/cheked.svg"
+                          : "/images/icons/add.svg"
+                      }
+                      alt="added"
+                    />
+                  ))
+                }
               </div>
             </div>
           </>

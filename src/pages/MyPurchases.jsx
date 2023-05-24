@@ -8,7 +8,7 @@ const MyPurchases = (loadingFinish) => {
   const { isInBasket,myPurches } = useContext(CustomContext);
 
   const { pathname } = useLocation();
-  console.log(pathname);
+  
 
   return (
     <div className="favorite">

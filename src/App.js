@@ -35,7 +35,7 @@ const App = () => {
   return (
     
     <div className="loyout">
-      <div>ljiui</div>
+    
       <div className="wrapper">
       
         <Header setOpenBasket={setOpenBasket} />
