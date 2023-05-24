@@ -49,9 +49,10 @@
       cursor: pointer;
     }
   }
-  a {
+  &-link{
     color: #a3a3a0;
     font-weight: 600;
     font-size: 14px;
   }
 }
+.active{color:rgb(67, 66, 66);text-decoration: underline;}

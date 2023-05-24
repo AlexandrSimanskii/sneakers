@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,NavLink } from "react-router-dom";
 
 const Header = ({ setOpenBasket }) => {
   return (
@@ -14,28 +14,27 @@ const Header = ({ setOpenBasket }) => {
 
       <ul className="header__right">
         <li className="header__right-li">
-         <Link to={"/"}> <img
-            onClick={() => setOpenBasket(true)}
-            src="/images/icons/basket.svg"
-            alt="basket"
-          /></Link>
+          <NavLink to={"/"}>
+           
+            <img
+              onClick={() => setOpenBasket(true)}
+              src="/images/icons/basket.svg"
+              alt="basket"
+            />
+          </NavLink>
 
           <span className="header__right-count">1205 руб</span>
         </li>
+        <li>
+          <NavLink className="header-link"  to={"/"}>Главная</NavLink>
+        </li>
+        <li>
+          <NavLink  className="header-link" to={"/favorites"}>Нравится</NavLink>
+        </li>
 
         <li>
-          <Link to={"/favorites"}>
-            {/* <img src="/images/icons/heart.svg" alt="heart" /> */}
-            Нравится
-          </Link>
+          <NavLink  className="header-link" to={"/purches"}>Приобретенный товар</NavLink>
         </li>
-        <li>
-          <Link to={"/"}>
-            {/* <img src="/images/icons/user.svg" alt="user" /> */}
-            Главная
-          </Link>
-        </li>
-        <li><Link to={"/purches"}>Приобретенный товар</Link></li>
       </ul>
     </header>
   );

@@ -12,7 +12,7 @@ const App = () => {
   const [openBasket, setOpenBasket] = useState(false);
   const [products, setProducts] = useState([]);
   const [loadingFinish, setLoadingFinish] = useState(false);
-  const { setIsInBasket, setFavoritItem, myPurches, setMyPurches } =
+  const { setIsInBasket, setFavoritItem, setMyPurches } =
     useContext(CustomContext);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const App = () => {
     fetchData();
     // eslint-disable-next-line
   }, []);
-  console.log(myPurches);
+
   return (
     <div className="loyout">
       <div className="wrapper">

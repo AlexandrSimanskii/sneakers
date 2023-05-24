@@ -4,8 +4,10 @@ import { CustomContext } from "../../untils/Context";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 const Inform = ({ loadingFinish, title }) => {
+  const { pathname } = useLocation();
+
+  console.log(pathname);
   const {
-    setMyPurches,
     myPurches,
     isInBasket,
     setIsInBasket,
@@ -20,9 +22,7 @@ const Inform = ({ loadingFinish, title }) => {
       .then((res) => setFavoritItem(res.data));
     // eslint-disable-next-line
   }, []);
-  const { pathname } = useLocation();
-  console.log(myPurches);
-  console.log(pathname);
+
   return (
     <>
       <div className="favorite__top">
@@ -32,7 +32,7 @@ const Inform = ({ loadingFinish, title }) => {
         <h2 className="favorite__top-title">{title}</h2>
       </div>
       <div className="content__cards">
-        {(pathname === "/purches" ? myPurches : favoritItem).map((item) => {
+        {(pathname === "/purches" ? favoritItem : myPurches).map((item) => {
           return (
             <Card
               key={item.id}
@@ -43,7 +43,7 @@ const Inform = ({ loadingFinish, title }) => {
               setFavoritItem={setFavoritItem}
               deleteFromBasket={deleteFromBasket}
               added={isInBasket.some((obj) => obj.id === item.id)}
-              like={true}
+              like={pathname !== "/purches"}
               loadingFinish={loadingFinish}
             />
           );
