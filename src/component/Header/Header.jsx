@@ -1,7 +1,11 @@
-import React from "react";
-import { Link,NavLink } from "react-router-dom";
+import React,{useContext} from "react";
+import { NavLink } from "react-router-dom";
+import { CustomContext } from "../../untils/Context";
 
 const Header = ({ setOpenBasket }) => {
+
+  const {amountBasket}= useContext(CustomContext)
+  console.log(amountBasket);
   return (
     <header className="header">
       <div className="header__left">
@@ -23,7 +27,7 @@ const Header = ({ setOpenBasket }) => {
             />
           </NavLink>
 
-          <span className="header__right-count">1205 руб</span>
+          <span className="header__right-count">{amountBasket} руб</span>
         </li>
         <li>
           <NavLink className="header-link"  to={"/"}>Главная</NavLink>

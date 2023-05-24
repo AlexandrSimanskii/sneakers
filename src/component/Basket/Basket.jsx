@@ -12,6 +12,7 @@ const Basket = ({ setOpenBasket }) => {
     setIsInBasket,
     isInBasket,
     deleteFromBasket,
+    amountBasket,
   } = useContext(CustomContext);
 
   const renderMyPurches = async () => {
@@ -19,9 +20,9 @@ const Basket = ({ setOpenBasket }) => {
     setMyPurches(isInBasket);
     isInBasket.map((item) => axios.delete(`/basket/${item.id}`));
     setIsInBasket([]);
-    setOrderIsCompleted(false)
+    setOrderIsCompleted(false);
   };
-console.log(myPurches);
+  console.log(myPurches);
   return (
     <div className="shadow">
       <div className="overlay"></div>
@@ -65,12 +66,12 @@ console.log(myPurches);
               <li className="basket__bottom-total">
                 <span>Итого:</span>
                 <div></div>
-                <b>3211 руб</b>
+                <b>{amountBasket} руб</b>
               </li>
               <li className="basket__bottom-total">
                 <span>Налог:</span>
                 <div></div>
-                <b>12%</b>
+                <b>{amountBasket*0.13}</b>
               </li>
               <li>
                 <button

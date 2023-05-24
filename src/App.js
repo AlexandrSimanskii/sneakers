@@ -11,8 +11,8 @@ import MyPurchases from "./pages/MyPurchases";
 const App = () => {
   const [openBasket, setOpenBasket] = useState(false);
   const [products, setProducts] = useState([]);
-  const [loadingFinish, setLoadingFinish] = useState(false);
-  const { setIsInBasket, setFavoritItem, setMyPurches } =
+ 
+  const { setIsInBasket, setFavoritItem, setMyPurches,setLoadingFinish,loadingFinish } =
     useContext(CustomContext);
 
   useEffect(() => {

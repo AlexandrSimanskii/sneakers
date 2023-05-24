@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect, useState, useContext } from "react";
+import { CustomContext } from "../../untils/Context";
 import ContentLoader from "react-content-loader";
 
 const Card = ({
@@ -12,12 +12,12 @@ const Card = ({
   setFavoritItem,
   added,
   like,
-  loadingFinish,
+
   pathname,
 }) => {
   const [productLiked, setProductLiked] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
-
+  const { loadingFinish } = useContext(CustomContext);
   useEffect(() => {
     setProductLiked(like); // eslint-disable-next-line
   }, [favoritItem]);
@@ -44,7 +44,7 @@ const Card = ({
     }
     setProductLiked((prev) => !prev);
   };
- 
+
   return (
     <div>
       <div className="content__card">
@@ -55,7 +55,6 @@ const Card = ({
                 <img
                   onClick={() => {
                     addDeleteFavorite();
-                    
                   }}
                   className="content__card-heart"
                   src={
@@ -75,23 +74,21 @@ const Card = ({
                 <p className="content__card-amount">{item.prise} руб</p>
               </div>
               <div>
-                {
-                  (pathname === "/purches" ? null : (
-                    <img
-                      onClick={() => {
-                        !isAdded ? onClickAdd() : deleteFromBasket(item.id);
-                        setIsAdded((prev) => !prev);
-                      }}
-                      className="content__card-add"
-                      src={
-                        isAdded
-                          ? "/images/icons/cheked.svg"
-                          : "/images/icons/add.svg"
-                      }
-                      alt="added"
-                    />
-                  ))
-                }
+                {pathname === "/purches" ? null : (
+                  <img
+                    onClick={() => {
+                      !isAdded ? onClickAdd() : deleteFromBasket(item.id);
+                      setIsAdded((prev) => !prev);
+                    }}
+                    className="content__card-add"
+                    src={
+                      isAdded
+                        ? "/images/icons/cheked.svg"
+                        : "/images/icons/add.svg"
+                    }
+                    alt="added"
+                  />
+                )}
               </div>
             </div>
           </>
