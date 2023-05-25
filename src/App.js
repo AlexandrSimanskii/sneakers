@@ -11,11 +11,25 @@ import MyPurchases from "./pages/MyPurchases";
 const App = () => {
   const [openBasket, setOpenBasket] = useState(false);
   const [products, setProducts] = useState([]);
- 
-  const { setIsInBasket, setFavoritItem, setMyPurches,setLoadingFinish,loadingFinish } =
-    useContext(CustomContext);
+
+  const {
+    isInBasket,
+    setIsInBasket,
+    setFavoritItem,
+    setMyPurches,
+    setLoadingFinish,
+    loadingFinish,
+    setAmountBasket,
+  } = useContext(CustomContext);
+
+  const amount = () => {
+    return isInBasket.reduce(function (acc, obj) {
+      return acc + Number(obj.prise);
+    }, 0);
+  };
 
   useEffect(() => {
+  try {
     async function fetchData() {
       const basketResponse = await axios.get("/Basket");
       const favoriteResponse = await axios.get("/favorite");
@@ -23,21 +37,23 @@ const App = () => {
       const myPurchesResponse = await axios.get("/order");
       setLoadingFinish(true);
 
-      setIsInBasket(basketResponse.data);
+     await setIsInBasket(basketResponse.data);
       setProducts(itemResponse.data);
       setFavoritItem(favoriteResponse.data);
       setMyPurches(myPurchesResponse.data);
+      setAmountBasket(amount);
     }
     fetchData();
+  } catch (error) { console.log("erorr in app");
+    
+  }
+
     // eslint-disable-next-line
   }, []);
 
   return (
-    
     <div className="loyout">
-    
       <div className="wrapper">
-      
         <Header setOpenBasket={setOpenBasket} />
         <Routes>
           <Route
@@ -52,7 +68,7 @@ const App = () => {
               />
             }
           />
-          
+
           <Route
             path="/favorites"
             element={<Favorites loadingFinish={loadingFinish} />}

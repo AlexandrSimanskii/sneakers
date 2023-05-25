@@ -22,7 +22,7 @@ const Basket = ({ setOpenBasket }) => {
     setIsInBasket([]);
     setOrderIsCompleted(false);
   };
-  console.log(myPurches);
+
   return (
     <div className="shadow">
       <div className="overlay"></div>
@@ -71,7 +71,7 @@ const Basket = ({ setOpenBasket }) => {
               <li className="basket__bottom-total">
                 <span>Налог:</span>
                 <div></div>
-                <b>{amountBasket*0.13}</b>
+                <b>{Math.round(amountBasket*0.13)}</b>
               </li>
               <li>
                 <button
