@@ -20,6 +20,7 @@ const App = () => {
     setLoadingFinish,
     loadingFinish,
     setAmountBasket,
+    amountBasket,
   } = useContext(CustomContext);
 
   const amount = () => {
@@ -29,28 +30,26 @@ const App = () => {
   };
 
   useEffect(() => {
-  try {
-    async function fetchData() {
-      const basketResponse = await axios.get("/Basket");
-      const favoriteResponse = await axios.get("/favorite");
-      const itemResponse = await axios.get("/products");
-      const myPurchesResponse = await axios.get("/order");
-      setLoadingFinish(true);
+    try {
+      async function fetchData() {
+        const basketResponse = await axios.get("/Basket");
+        const favoriteResponse = await axios.get("/favorite");
+        const itemResponse = await axios.get("/products");
+        const myPurchesResponse = await axios.get("/order");
+        setLoadingFinish(true);
 
-     await setIsInBasket(basketResponse.data);
-      setProducts(itemResponse.data);
-      setFavoritItem(favoriteResponse.data);
-      setMyPurches(myPurchesResponse.data);
-      setAmountBasket(amount);
+        setIsInBasket(basketResponse.data);
+        setProducts(itemResponse.data);
+        setFavoritItem(favoriteResponse.data);
+        setMyPurches(myPurchesResponse.data);
+      }
+      fetchData();
+    } catch (error) {
+      console.log("erorr in app");
     }
-    fetchData();
-  } catch (error) { console.log("erorr in app");
-    
-  }
-
     // eslint-disable-next-line
   }, []);
-
+useEffect(()=>{setAmountBasket(amount)},[isInBasket])
   return (
     <div className="loyout">
       <div className="wrapper">

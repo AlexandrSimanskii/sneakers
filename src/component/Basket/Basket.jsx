@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 
 import { CustomContext } from "../../untils/Context";
 import axios from "../../untils/axios";
@@ -13,14 +13,25 @@ const Basket = ({ setOpenBasket }) => {
     isInBasket,
     deleteFromBasket,
     amountBasket,
+    setAmountBasket
   } = useContext(CustomContext);
 
+
+
+  console.log(myPurches);
+
   const renderMyPurches = async () => {
+   try {
     await isInBasket.map((item) => axios.post("/order", item));
-    setMyPurches(isInBasket);
+    setMyPurches((prev)=>[...prev,isInBasket].flat());
+    
     isInBasket.map((item) => axios.delete(`/basket/${item.id}`));
     setIsInBasket([]);
     setOrderIsCompleted(false);
+   } catch (error) {
+    console.log("error");
+    
+   }
   };
 
   return (
@@ -69,9 +80,9 @@ const Basket = ({ setOpenBasket }) => {
                 <b>{amountBasket} руб</b>
               </li>
               <li className="basket__bottom-total">
-                <span>Налог:</span>
+                <span className="basket__bottom-tax">НДС 22%:</span>
                 <div></div>
-                <b>{Math.round(amountBasket*0.13)}</b>
+                <b>{Math.round(amountBasket*0.22)}</b>
               </li>
               <li>
                 <button

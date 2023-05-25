@@ -5,7 +5,7 @@ import { CustomContext } from "../../untils/Context";
 const Header = ({ setOpenBasket }) => {
 
   const {amountBasket}= useContext(CustomContext)
-  // console.log(amountBasket);
+  
   return (
     <header className="header">
       <div className="header__left">

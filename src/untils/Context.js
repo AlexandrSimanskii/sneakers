@@ -13,7 +13,7 @@ export const Context = (props) => {
     axios.delete(`/basket/${id}`);
     setIsInBasket((prev) => prev.filter((item) => item.id !== id));
   };
-
+ 
   const isPresentInBasket = (item) => {
     return isInBasket.some((obj) => obj.id === item.id);
   };
