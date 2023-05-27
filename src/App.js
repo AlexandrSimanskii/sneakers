@@ -20,14 +20,7 @@ const App = () => {
     setLoadingFinish,
     loadingFinish,
     setAmountBasket,
-    amountBasket,
   } = useContext(CustomContext);
-
-  const amount = () => {
-    return isInBasket.reduce(function (acc, obj) {
-      return acc + Number(obj.prise);
-    }, 0);
-  };
 
   useEffect(() => {
     try {
@@ -41,7 +34,7 @@ const App = () => {
         setIsInBasket(basketResponse.data);
         setProducts(itemResponse.data);
         setFavoritItem(favoriteResponse.data);
-        setMyPurches(myPurchesResponse.data);
+        setMyPurches(myPurchesResponse.data.flat());
       }
       fetchData();
     } catch (error) {
@@ -49,7 +42,16 @@ const App = () => {
     }
     // eslint-disable-next-line
   }, []);
-useEffect(()=>{setAmountBasket(amount)},[isInBasket])
+  const amount = () => {
+    return isInBasket.reduce(function (acc, obj) {
+      return acc + Number(obj.prise);
+    }, 0);
+  };
+  useEffect(() => {
+    setAmountBasket(amount);
+    // eslint-disable-next-line
+  }, [isInBasket]);
+
   return (
     <div className="loyout">
       <div className="wrapper">

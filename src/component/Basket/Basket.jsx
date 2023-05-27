@@ -1,4 +1,4 @@
-import React, { useContext, useState,useEffect } from "react";
+import React, { useContext, useState } from "react";
 
 import { CustomContext } from "../../untils/Context";
 import axios from "../../untils/axios";
@@ -7,31 +7,25 @@ const Basket = ({ setOpenBasket }) => {
   const [orderIsCompleted, setOrderIsCompleted] = useState(true);
 
   const {
-    myPurches,
     setMyPurches,
     setIsInBasket,
     isInBasket,
     deleteFromBasket,
     amountBasket,
-    setAmountBasket
   } = useContext(CustomContext);
 
-
-
-  console.log(myPurches);
-
   const renderMyPurches = async () => {
-   try {
-    await isInBasket.map((item) => axios.post("/order", item));
-    setMyPurches((prev)=>[...prev,isInBasket].flat());
-    
-    isInBasket.map((item) => axios.delete(`/basket/${item.id}`));
-    setIsInBasket([]);
-    setOrderIsCompleted(false);
-   } catch (error) {
-    console.log("error");
-    
-   }
+    try {
+      // await isInBasket.map((item) => axios.post("/order", item));
+      await axios.post("/order", isInBasket);
+      setMyPurches((prev) => [...prev, isInBasket].flat());
+
+      isInBasket.map((item) => axios.delete(`/basket/${item.id}`));
+      setIsInBasket([]);
+      setOrderIsCompleted(false);
+    } catch (error) {
+      console.log("error");
+    }
   };
 
   return (
@@ -82,7 +76,7 @@ const Basket = ({ setOpenBasket }) => {
               <li className="basket__bottom-total">
                 <span className="basket__bottom-tax">НДС 22%:</span>
                 <div></div>
-                <b>{Math.round(amountBasket*0.22)}</b>
+                <b>{Math.round(amountBasket * 0.22)}</b>
               </li>
               <li>
                 <button
