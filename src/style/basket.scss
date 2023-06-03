@@ -15,8 +15,8 @@
   background-color: rgb(255, 255, 255);
   color: #000000;
   padding: 32px 30px 30px;
-  width: 30.8%;
-
+  width: 30vw;
+height: 100%;
   border-radius: 0 0 0 10px;
 
   position: absolute;
@@ -80,7 +80,7 @@
       justify-content: space-between;
       align-items: flex-end;
       column-gap: 7px;
-     
+
       div {
         position: relative;
         top: -3px;
@@ -158,5 +158,20 @@
       left: 17px;
       margin-left: 10px;
     }
+  }
+}
+@media (max-width: 1050px) {
+  .basket {
+    width: 50%;
+  }
+}
+@media (max-width: 680px) {
+  .basket {
+    width: 80%;
+  }
+}
+@media (max-width: 400px) {
+  .basket {
+    width: 100%;
   }
 }

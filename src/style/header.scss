@@ -49,10 +49,25 @@
       cursor: pointer;
     }
   }
-  &-link{
+  &-link {
     color: #a3a3a0;
     font-weight: 600;
     font-size: 14px;
   }
 }
-.active{color:rgb(67, 66, 66);text-decoration: underline;}
+.active {
+  color: rgb(67, 66, 66);
+  text-decoration: underline;
+}
+
+@media (max-width: 650px) {
+  .header__right {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+@media (max-width: 340px) {
+  .header{
+    padding-left: 10px;
+  }
+}

@@ -1,5 +1,12 @@
 {
-  "basket": [],
+  "basket": [
+    {
+      "id": 1,
+      "img": "images/img/image 1.jpg",
+      "model": "Мужские Кроссовки Nike Blazer Mid Suede",
+      "prise": "12999"
+    }
+  ],
   "favorite": [
     {
       "id": 3,
